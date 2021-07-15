@@ -17,19 +17,20 @@ describe('RandomNumber', ()=> {
         // This is now a random number instead of 0
         const randomNumber = parseInt(wrapper.find('span').element.textContent)
     })
-
-    test('If button is clicked, randomNumber should be bettween 200 and 300', async () => {
-        const wrapper = mount(RandomNumber, {
-            propsData: {
-                min:200,
-                max:300
-            }
-        })
-        wrapper.find('button').trigger('click') 
-
-        await wrapper.vm.$nextTick()
-        const randomNumber = parseInt(wrapper.find('span').element.textContent)
-        expect(randomNumber).toBeGreaterThanOrEqual(200)
-        expect(RandomNumber).toBeLessThanOrEqual(300)
+    
+test('If button is clicked, randomNumber should be between 200 and 300', async () => {
+    const wrapper = mount(RandomNumber, {
+      propsData: {
+        min: 200,
+        max: 300
+      }
     })
+  
+    wrapper.find('button').trigger('click')
+    await wrapper.vm.$nextTick() 
+  
+    const randomNumber = parseInt(wrapper.find('span').element.textContent)
+    expect(randomNumber).toBeGreaterThanOrEqual(200)
+    expect(randomNumber).toBeLessThanOrEqual(300)
+  })
 })
